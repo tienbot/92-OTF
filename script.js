@@ -3,10 +3,10 @@ const secondsCount = document.querySelector(".seconds");
 const level = document.querySelector(".grade");
 const context = canvas.getContext("2d");
 const pugDimensions = { width: 353 * 1.2, height: 325 * 1.2 };
-let done =  document.querySelector(".done");
+let done =  document.querySelector(".newSite");
 
 const levels = {
-  5: "Почетный гость",
+  5: "Настойчивый прихожанин",
   10: "Младший Помощник",
   15: "Помощник",
   35: "Старший Помощник",
@@ -109,15 +109,20 @@ function loopDraw() {
     level.innerText = levels[newTime]
   }
 
-  if (newTime>30499){
-    done.innerHTML = `
-        <a href="https://puginarug.com/">Original site</a>
-        <a href="../C-404">Новый сайт</a>
-    `
-  }
-
   requestAnimationFrame(loopDraw);
 }
+
+let nextPhrase = [
+    "Дальше!",
+    "Next Level!",
+    "Продолжаем!",
+    "Next!",
+    "Вперед!",
+    "Следующий сайт!",
+    "На новую страницу!",
+  ];
+  var randomIndex = Math.floor(Math.random() * nextPhrase.length);
+  done.textContent = nextPhrase[randomIndex];
 
 function startLooping() {
   requestAnimationFrame(loopDraw);
